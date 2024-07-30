@@ -1,4 +1,82 @@
+## etcd - Metadata means - Data of Data - Store in key value format
+### Script writing
+- We write code in manifest file Language can use `YAML` and `JSON`
+- This code apply one cluster 
+- Pod run on node which controlled by master
+- 
 
+In Kubernetes, the master node is responsible for managing the entire cluster and coordinating all activities within the cluster. Here are the main components contained in the master node:
+
+### Master Node Components
+
+1. **API Server**:
+   - **Role**: Acts as the front-end for the Kubernetes control plane.
+   - **Function**: Exposes the Kubernetes API. It handles RESTful requests from users, tools, and other components, ensuring that the cluster's desired state matches the current state.
+
+2. **Controller Manager**:
+   - **Role**: Runs controllers that regulate the state of the cluster.
+   - **Function**: Monitors the state of the cluster through the API server and makes decisions to drive the cluster towards the desired state. Examples of controllers include the Node Controller (responsible for noticing and responding when nodes go down), the Replication Controller (responsible for maintaining the correct number of pods for every replication controller object in the system), and others.
+
+3. **Scheduler**:
+   - **Role**: Assigns pods to nodes.
+   - **Function**: Watches newly created pods that have no node assigned, and selects a node for them to run on based on resource requirements, policies, and constraints. It considers factors like node capacity, affinity/anti-affinity specifications, data locality, and workload spread.
+
+4. **etcd**:
+   - **Role**: A distributed key-value store.
+   - **Function**: Stores all cluster data, including the configuration data, state data, and metadata. It acts as the source of truth for the cluster's desired state and is used by the API server to store all the data about the cluster.
+
+### Additional Details
+
+- **API Server**:
+  - **Endpoints**: Exposes various API endpoints for different resources like pods, services, deployments, etc.
+  - **Security**: Manages authentication, authorization, and admission control.
+
+- **Controller Manager**:
+  - **Types of Controllers**: Includes multiple controllers like the Replication Controller, Endpoint Controller, Namespace Controller, and Service Account Controller.
+  - **Monitoring**: Constantly monitors the state of the cluster through the API server and takes corrective actions.
+
+- **Scheduler**:
+  - **Policies**: Can be configured with various scheduling policies and priorities to determine where pods should be placed.
+  - **Extensibility**: Supports custom schedulers for specific requirements.
+
+- **etcd**:
+  - **High Availability**: Often set up as a cluster of etcd nodes to ensure high availability and data redundancy.
+  - **Backup**: Regular backups are crucial to prevent data loss in case of failures.
+
+### Master Node Diagram
+
+```plaintext
+Master Node
+├── API Server
+│   ├── Handles RESTful requests
+│   ├── Exposes Kubernetes API
+│   ├── Manages security (authentication, authorization)
+│   └── Admission control
+│
+├── Controller Manager
+│   ├── Node Controller
+│   ├── Replication Controller
+│   ├── Endpoint Controller
+│   ├── Namespace Controller
+│   └── Service Account Controller
+│
+├── Scheduler
+│   ├── Watches for unassigned pods
+│   ├── Assigns pods to nodes based on policies
+│   ├── Considers resource requirements
+│   ├── Supports custom scheduling
+│   └── Data locality and workload spread
+│
+└── etcd
+    ├── Distributed key-value store
+    ├── Stores all cluster data
+    ├── Source of truth for desired state
+    ├── High availability setup
+    └── Regular backups
+```
+
+- This structure shows how the master node's components work together to manage and control the Kubernetes cluster.
+________________________________________________________________________
 ### Detailed Tree with Nested Pods and Containers
 Tree diagram representing the architecture of Kubernetes:
 
