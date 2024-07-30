@@ -1,5 +1,55 @@
 ## etcd - Metadata means - Data of Data - Store in key value format
-- API Server ➡️ Controller Manage ➡️ etcd clusterr ➡️ Kube - Scheduler - Kube Scheduler it's handle pod creation and manage of them ➡️ 
+- Master ➡️ Node
+    - Sure, here is a list of the key components of a Kubernetes master node and the components of a Kubernetes worker node:
+
+### Master Node Components
+
+1. **API Server**: 
+   - Exposes the Kubernetes API.
+   - Acts as the front-end of the Kubernetes control plane.
+
+2. **etcd**: 
+   - Key-value store.
+   - Stores all cluster data.
+
+3. **Controller Manager**:
+   - Node Controller: Manages node health.
+   - Replication Controller: Ensures the desired number of pods.
+   - Deployment Controller: Manages deployments.
+   - ReplicaSet Controller: Ensures stable pod replicas.
+   - StatefulSet Controller: Manages StatefulSets.
+   - DaemonSet Controller: Ensures pod copies on nodes.
+   - Job Controller: Manages job objects.
+   - CronJob Controller: Manages CronJobs.
+   - Service Controller: Manages service objects.
+   - Endpoint Controller: Populates endpoint objects.
+   - Namespace Controller: Manages namespaces.
+   - Service Account Controller: Manages service accounts.
+   - Resource Quota Controller: Manages resource quotas.
+
+4. **Scheduler**: 
+   - Assigns pods to nodes.
+   - Ensures pods are placed based on resource requirements and policies.
+
+### Worker Node Components
+
+1. **Kubelet**: 
+   - Agent running on each node.
+   - Ensures containers are running in pods.
+
+2. **Kube-Proxy**: 
+   - Network proxy.
+   - Maintains network rules and handles communication between pods.
+
+3. **Container Runtime**: 
+   - Runs containers.
+   - Examples include Docker, containerd, and CRI-O.
+
+This list provides an overview of the primary components on both the master and worker nodes in a Kubernetes cluster.
+__________________________________________________________________________________________________________________________________________
+
+- API Server ➡️ Controller Manage ➡️ etcd clusterr ➡️ Kube - Scheduler - Kube Scheduler it's handle pod creation and manage of them ➡️
+
 ### Script writing
 - We write code in manifest file Language can use `YAML` and `JSON`
 - This code apply one cluster 
