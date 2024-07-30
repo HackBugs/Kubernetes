@@ -1,9 +1,8 @@
 ## etcd - Metadata means - Data of Data - Store in key value format
 ## Maste and node both together make cluster
 
-- Master ➡️ Node
-
-    - Sure, here is a list of the key components of a Kubernetes master node and the components of a Kubernetes worker node:
+### Master ➡️ Node
+ist of the key components of a Kubernetes master node and the components of a Kubernetes worker node:
 
 ### Master Node Components
 
