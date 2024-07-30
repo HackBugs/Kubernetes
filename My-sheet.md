@@ -1,3 +1,4 @@
+### ✍️ Author : HackBugs
 ` etcd - Metadata means - Data of Data - Store in key value format`
 ` Maste and node both together make cluster`
 
