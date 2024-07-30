@@ -1,4 +1,5 @@
 ## etcd - Metadata means - Data of Data - Store in key value format
+- API Server ➡️ Controller Manage ➡️ etcd clusterr ➡️ Kube - Scheduler - Kube Scheduler it's handle pod creation and manage of them ➡️ 
 ### Script writing
 - We write code in manifest file Language can use `YAML` and `JSON`
 - This code apply one cluster 
