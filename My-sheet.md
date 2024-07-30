@@ -1,4 +1,105 @@
-### 
+
+### Detailed Tree with Nested Pods and Containers
+Tree diagram representing the architecture of Kubernetes:
+
+```plaintext
+Kubernetes Cluster
+├── Master Node
+│   ├── API Server
+│   ├── Controller Manager
+│   ├── Scheduler
+│   └── etcd
+│
+└── Worker Nodes
+    ├── Kubelet
+    ├── Kube Proxy
+    ├── Container Runtime (e.g., Docker, containerd)
+    └── Pods
+        ├── Container 1
+        ├── Container 2
+        └── ...
+```
+
+### Components Explanation
+
+#### Master Node
+1. **API Server**:
+   - The API server is a component of the Kubernetes control plane that exposes the Kubernetes API. It is the front end of the Kubernetes control plane and handles RESTful requests from users and other components.
+
+2. **Controller Manager**:
+   - The controller manager is a daemon that runs in the master node and is responsible for running the various controllers that regulate the state of the cluster (e.g., Node Controller, Replication Controller).
+
+3. **Scheduler**:
+   - The scheduler is responsible for assigning newly created pods to nodes in the cluster based on resource requirements and other constraints.
+
+4. **etcd**:
+   - etcd is a key-value store used by Kubernetes to store all cluster data, including configuration data, state data, and metadata.
+
+#### Worker Nodes
+1. **Kubelet**:
+   - The kubelet is an agent that runs on each worker node and ensures that containers are running in a pod. It communicates with the master node to get instructions and reports back the status of the pods running on the node.
+
+2. **Kube Proxy**:
+   - The kube proxy is responsible for maintaining network rules on the nodes. It enables network communication to your pods from network sessions inside or outside of the cluster.
+
+3. **Container Runtime**:
+   - The container runtime is the software that is responsible for running containers. Examples include Docker and containerd.
+
+4. **Pods**:
+   - A pod is the smallest and simplest Kubernetes object. A pod represents a set of running containers on your cluster. Each pod runs one or more containers (such as Docker containers).
+
+### Detailed Tree with Nested Pods and Containers
+
+```plaintext
+Kubernetes Cluster
+├── Master Node
+│   ├── API Server
+│   ├── Controller Manager
+│   ├── Scheduler
+│   └── etcd
+│
+└── Worker Nodes
+    ├── Node 1
+    │   ├── Kubelet
+    │   ├── Kube Proxy
+    │   ├── Container Runtime (e.g., Docker, containerd)
+    │   └── Pods
+    │       ├── Pod 1
+    │       │   ├── Container 1
+    │       │   └── Container 2
+    │       └── Pod 2
+    │           ├── Container 1
+    │           ├── Container 2
+    │           └── Container 3
+    │
+    ├── Node 2
+    │   ├── Kubelet
+    │   ├── Kube Proxy
+    │   ├── Container Runtime (e.g., Docker, containerd)
+    │   └── Pods
+    │       ├── Pod 1
+    │       │   └── Container 1
+    │       └── Pod 2
+    │           ├── Container 1
+    │           ├── Container 2
+    │           └── Container 3
+    │
+    └── Node 3
+        ├── Kubelet
+        ├── Kube Proxy
+        ├── Container Runtime (e.g., Docker, containerd)
+        └── Pods
+            ├── Pod 1
+            │   ├── Container 1
+            │   └── Container 2
+            └── Pod 2
+                ├── Container 1
+                ├── Container 2
+                └── Container 3
+```
+________________________________________________________________________________________________________________________________
+
+This tree structure provides a visual representation of how Kubernetes components are organized and interact within a cluster.
 
 #### Basic Commands
 
