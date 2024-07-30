@@ -4,8 +4,70 @@
 - We write code in manifest file Language can use `YAML` and `JSON`
 - This code apply one cluster 
 - Pod run on node which controlled by master
-- 
+________________________________________________________________________________________________________________________________________________
 
+### Controller Manager Components and Diagram
+
+The Controller Manager in Kubernetes is a key component of the master node. It is responsible for running various controller processes that manage different aspects of the cluster's state. Here are the main controllers contained within the Controller Manager:
+
+```plaintext
+Controller Manager
+├── Node Controller
+│   ├── Monitors node health
+│   └── Responds to node additions/removals and failures
+│
+├── Replication Controller
+│   ├── Ensures desired number of pod replicas
+│   └── Creates/deletes pods to maintain desired state
+│
+├── Deployment Controller
+│   ├── Manages deployments
+│   └── Updates pods according to deployment strategy
+│
+├── ReplicaSet Controller
+│   ├── Maintains stable set of replica pods
+│   └── Ensures desired number of pods are running
+│
+├── StatefulSet Controller
+│   ├── Manages StatefulSets
+│   └── Ensures correct number and order of pods
+│
+├── DaemonSet Controller
+│   ├── Ensures a pod copy on selected nodes
+│   └── Manages pod deployment on nodes
+│
+├── Job Controller
+│   ├── Manages job objects
+│   └── Ensures successful termination of specified pods
+│
+├── CronJob Controller
+│   ├── Manages CronJobs
+│   └── Creates jobs on schedule
+│
+├── Service Controller
+│   ├── Manages service objects
+│   └── Maps services to endpoints
+│
+├── Endpoint Controller
+│   ├── Populates endpoint objects
+│   └── Maintains service-to-pod mapping
+│
+├── Namespace Controller
+│   ├── Manages namespaces
+│   └── Handles namespace lifecycle
+│
+├── Service Account Controller
+│   ├── Manages service accounts
+│   └── Creates default accounts for namespaces
+│
+└── Resource Quota Controller
+    ├── Manages resource quotas
+    └── Ensures resource usage within limits
+```
+
+This breakdown shows how each controller within the Controller Manager has a specific role and function, contributing to the overall management and operation of the Kubernetes cluster.
+
+________________________________________________________________________________________________________________________________________________
 In Kubernetes, the master node is responsible for managing the entire cluster and coordinating all activities within the cluster. Here are the main components contained in the master node:
 
 ### Master Node Components
