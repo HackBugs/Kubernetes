@@ -2,6 +2,12 @@
 ` etcd - Metadata means - Data of Data - Store in key value format`
 ` Maste and node both together make cluster`
 
+### Higher level Kubernetes abject - use for auto acaling auto healing
+   - Versioing and rollback
+   - Higher level service - can create static ip 
+   - volume
+     
+________________________________________________________________________________________________________________________________________________
 ### Master ➡️ Node
 ist of the key components of a Kubernetes master node and the components of a Kubernetes worker node:
 
