@@ -115,8 +115,6 @@ kubectl get nodes
 - **kubeadm** is used for setting up and initializing Kubernetes clusters.
 - **kubectl** is the command-line tool for managing and interacting with Kubernetes clusters.
 - **Minikube** provides a local Kubernetes environment for development and testing purposes.
-
-
 __________________________________________________________________________________________________________________________________________________________
 ### Installtion
 Kubernetes can be configured in various ways depending on your requirements, and one of the simplest setups is installing everything on a single node. Here's a step-by-step guide to installing Kubernetes on a single node using Minikube, which is a tool that makes it easy to run Kubernetes locally.
