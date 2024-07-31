@@ -1,7 +1,7 @@
 ### ✍️ Author : HackBugs
 
 ### Kubernetes Commands
-[All-Commands]([url](https://phoenixnap.com/kb/install-kubernetes-on-ubuntu))
+[All-Commands](https://phoenixnap.com/kb/install-kubernetes-on-ubuntu))
 
 ### Docker installation
 - sudo apt update
