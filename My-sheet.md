@@ -1,4 +1,26 @@
 ### ✍️ Author : HackBugs
+
+### Kubernetes Commands
+[All-Commands]([url](https://phoenixnap.com/kb/install-kubernetes-on-ubuntu))
+
+### Docker installation
+- sudo apt update
+- sudo apt install docker.io -y
+- sudo systemctl enable docker
+- sudo systemctl status docker
+- sudo systemctl start docker
+
+### Master cmd and installation
+- This cmd use on master node
+- Kubeedm init
+- Bootstraping means establishing a connection between the master and node, typically through ports or other methods.
+- mkdir -p $HOME/.kube
+- sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
+- sudo chown $(id -u):$(id -g) $HOME/.kube/config
+- kubectl apply -f https://github.com/flannel-io/flannel/releases/latest/download/kube-flannel.yml
+- kubectl taint nodes --all node-role.kubernetes.io/control-plane-
+- 
+
 ` etcd - Metadata means - Data of Data - Store in key value format`
 ` Maste and node both together make cluster`
 
