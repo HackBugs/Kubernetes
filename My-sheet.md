@@ -13,7 +13,7 @@
 
 ### Master cmd and installation
 - This cmd use on master node
-- Kubeedm init
+- Kubeadm init
 - Bootstraping means establishing a connection between the master and node, typically through ports or other methods.
 - mkdir -p $HOME/.kube
 - sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
