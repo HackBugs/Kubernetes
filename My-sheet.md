@@ -54,6 +54,167 @@ e.g- kubeadm join 172.31.6.165:6443 --token kl9fhu.co2n90v3rxtqllrs --discovery-
 GO TO MASTER AND RUN THIS COMMAND
 kubectl get nodes
 ```
+- The ```actual state``` is the current condition of the system, while the ```desired state``` is the condition you want the system to achieve.
+- We write Kubernetes configuration code in a ```manifest.yml file.``` The manifest file contains definitions for Kubernetes objects.
+- Pod ➡️ Service ➡️ volume ➡️ Namespace ➡️ replication ➡️ Secerets ➡️ Confg map ➡️ Deployments ➡️ Jobs ➡️ daemonset
+- Managing Kubernetes can be done using imperative commands and declarative configurations. Here's how:
+
+1. **Imperative Commands**: Directly instruct Kubernetes what to do with a single command.
+   - Example: `kubectl create deployment nginx --image=nginx`
+   - Useful for quick changes or testing.
+
+2. **Declarative Configurations**: Define the desired state of your Kubernetes objects in YAML or JSON files, which Kubernetes continuously ensures.
+   - Example: Writing the desired state in a `deployment.yml` file:
+     ```yaml
+     apiVersion: apps/v1
+     kind: Deployment
+     metadata:
+       name: nginx
+     spec:
+       replicas: 3
+       selector:
+         matchLabels:
+           app: nginx
+       template:
+         metadata:
+           labels:
+             app: nginx
+         spec:
+           containers:
+           - name: nginx
+             image: nginx
+     ```
+   - Apply the configuration: `kubectl apply -f deployment.yml`
+
+- Using imperative commands is faster for small tasks and immediate actions, while declarative configurations are better for managing complex setups and ensuring consistency over time.
+
+### Kubernetes Configurations
+- All-in-one single node installation to help with Minikube - we use this only for learning purposes and not for production.
+- Single node etcd or single master and multi-worker installation.
+- Single-node etcd, multi-master, and multi-worker installations.
+
+### Why Use kubeadm, kubectl, and Minikube
+
+#### kubeadm
+- **Purpose**: Simplifies the process of setting up a Kubernetes cluster.
+- **Use Case**: Ideal for bootstrapping clusters in a consistent and repeatable way.
+- **Functionality**: Initializes the Kubernetes control plane and nodes.
+
+#### kubectl
+- **Purpose**: Command-line tool to interact with the Kubernetes API.
+- **Use Case**: Manages and deploys applications, inspects and manages cluster resources.
+- **Functionality**: Allows you to run commands against Kubernetes clusters to manage resources.
+
+#### Minikube
+- **Purpose**: Runs a single-node Kubernetes cluster on your local machine.
+- **Use Case**: Perfect for learning and development environments.
+- **Functionality**: Provides a sandbox environment for testing Kubernetes features without the need for a full-scale cluster.
+
+### Summary
+- **kubeadm** is used for setting up and initializing Kubernetes clusters.
+- **kubectl** is the command-line tool for managing and interacting with Kubernetes clusters.
+- **Minikube** provides a local Kubernetes environment for development and testing purposes.
+
+__________________________________________________________________________________________________________________________________________________________
+### Installtion
+Kubernetes can be configured in various ways depending on your requirements, and one of the simplest setups is installing everything on a single node. Here's a step-by-step guide to installing Kubernetes on a single node using Minikube, which is a tool that makes it easy to run Kubernetes locally.
+
+### Step-by-Step Guide to Install Kubernetes on a Single Node Using Minikube
+
+#### Prerequisites:
+1. **Operating System**: Ubuntu or any Linux distribution.
+2. **Hardware Requirements**: Minimum 2GB RAM and 20GB disk space.
+
+#### Step 1: Install Dependencies
+
+Update your package list and install dependencies:
+
+```sh
+sudo apt-get update -y
+sudo apt-get install -y apt-transport-https ca-certificates curl
+```
+
+#### Step 2: Install Docker
+
+Minikube requires Docker as its container runtime. Install Docker:
+
+```sh
+sudo apt-get install -y docker.io
+sudo systemctl enable docker
+sudo systemctl start docker
+```
+
+#### Step 3: Install Minikube
+
+Download the Minikube binary and install it:
+
+```sh
+curl -LO https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64
+sudo install minikube-linux-amd64 /usr/local/bin/minikube
+```
+
+#### Step 4: Start Minikube
+
+Start Minikube with Docker driver:
+
+```sh
+minikube start --driver=docker
+```
+
+This command starts a single-node Kubernetes cluster using Minikube.
+
+#### Step 5: Install Kubectl
+
+Kubectl is a command-line tool for interacting with Kubernetes clusters. Install it:
+
+```sh
+curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
+sudo install -o root -g root -m 0755 kubectl /usr/local/bin/kubectl
+```
+
+#### Step 6: Verify Installation
+
+Check the status of your Minikube cluster:
+
+```sh
+minikube status
+```
+
+You should see that the cluster is running. Also, you can check the nodes in the cluster:
+
+```sh
+kubectl get nodes
+```
+
+You should see a single node listed.
+
+### Step 7: Create a Deployment
+
+Create a simple Nginx deployment to verify that everything is working:
+
+```sh
+kubectl create deployment nginx --image=nginx
+```
+
+Expose the deployment as a service:
+
+```sh
+kubectl expose deployment nginx --port=80 --type=NodePort
+```
+
+### Step 8: Access the Application
+
+To access the Nginx application, you can get the URL using:
+
+```sh
+minikube service nginx --url
+```
+
+Open the URL in your web browser to see the Nginx welcome page.
+
+### Summary
+
+You now have a single-node Kubernetes cluster running on your machine using Minikube. This setup is ideal for learning and development purposes. For production environments, consider using a multi-node cluster with proper high availability configurations.
 ________________________________________________________________________________________________________________________
 
 ### Docker installation
