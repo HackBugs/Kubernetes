@@ -221,7 +221,7 @@ Open the URL in your web browser to see the Nginx welcome page.
 You now have a single-node Kubernetes cluster running on your machine using Minikube. This setup is ideal for learning and development purposes. For production environments, consider using a multi-node cluster with proper high availability configurations.
 ________________________________________________________________________________________________________________________
 
-### Docker installation
+## ✍️ Docker installation
 - sudo apt update
 - sudo apt install docker.io -y
 - sudo systemctl enable docker
@@ -248,7 +248,7 @@ ________________________________________________________________________________
    - volume
      
 ________________________________________________________________________________________________________________________________________________
-### Master ➡️ Node
+## ✍️ Master ➡️ Node
 ist of the key components of a Kubernetes master node and the components of a Kubernetes worker node:
 
 ### Master Node Components
@@ -305,7 +305,7 @@ ________________________________________________________________________________
 - Pod run on node which controlled by master
 ________________________________________________________________________________________________________________________________________________
 
-### Controller Manager Components and Diagram
+## ✍️ Controller Manager Components and Diagram
 
 The Controller Manager in Kubernetes is a key component of the master node. It is responsible for running various controller processes that manage different aspects of the cluster's state. Here are the main controllers contained within the Controller Manager:
 
@@ -369,7 +369,7 @@ This breakdown shows how each controller within the Controller Manager has a spe
 ________________________________________________________________________________________________________________________________________________
 In Kubernetes, the master node is responsible for managing the entire cluster and coordinating all activities within the cluster. Here are the main components contained in the master node:
 
-### Master Node Components
+## ✍️ Master Node Components
 
 1. **API Server**:
    - **Role**: Acts as the front-end for the Kubernetes control plane.
@@ -439,7 +439,7 @@ Master Node
 
 - This structure shows how the master node's components work together to manage and control the Kubernetes cluster.
 ________________________________________________________________________
-### Detailed Tree with Nested Pods and Containers
+## ✍️ Detailed Tree with Nested Pods and Containers
 Tree diagram representing the architecture of Kubernetes:
 
 ```plaintext
@@ -541,7 +541,7 @@ ________________________________________________________________________________
 
 This tree structure provides a visual representation of how Kubernetes components are organized and interact within a cluster.
 
-#### Basic Commands
+## ✍️ Basic Commands
 
 1. **Check Cluster Info**
    ```bash
