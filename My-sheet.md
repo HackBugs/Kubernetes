@@ -4,6 +4,10 @@
 ### Kubernetes Commands
 [All-Commands for installation](https://phoenixnap.com/kb/install-kubernetes-on-ubuntu)</br>
 [All-Commands for installation-2](https://kubernetes.io/docs/tasks/tools/install-kubectl-linux/)
+
+- This cmd like `Sqlplus / as sysdba` - use of `strtup `
+- `Minikube status`
+- `Minikube start`
 _________________________________________________________________________________________________
 ### Use this cmd for installtionn on ubuntu
 ```sh
@@ -702,3 +706,171 @@ This tree structure provides a visual representation of how Kubernetes component
   ```
 
 This cheatsheet covers common Kubernetes commands and concepts. For more advanced usage and detailed documentation, refer to the [official Kubernetes documentation](https://kubernetes.io/docs/home/).
+______________________________________________________________________________________________________________________________________________________
+
+# ✍️ Labels, Selectors, ReplicationController and replicaset in Kubernetes
+### Kubernetes mein Labels, Selectors, ReplicationController aur ReplicaSet ka Explanation aur Commands
+
+**Labels**:
+Labels simple key-value pairs hote hain jo Kubernetes objects ko describe aur categorize karte hain. Yeh aapko specific resources ko search aur organize karne mein madad karte hain.
+
+**Example**:
+```yaml
+metadata:
+  labels:
+    app: myapp
+    environment: production
+```
+
+**Commands**:
+- `kubectl get pods --show-labels`: Sabhi pods ke labels dekhne ke liye.
+- `kubectl label pods <pod-name> app=myapp`: Ek pod ko label karne ke liye.
+
+**Selectors**:
+Selectors ka use karke aap specific labels wale objects ko select kar sakte hain. Yeh labels ke basis par filtering karne mein madad karte hain.
+
+**Example**:
+```yaml
+spec:
+  selector:
+    matchLabels:
+      app: myapp
+```
+
+**Commands**:
+- `kubectl get pods -l app=myapp`: Specific label wale pods ko retrieve karne ke liye.
+
+**ReplicationController**:
+ReplicationController ensure karta hai ki specified number of pod replicas hammesha running state mein rahein. Agar koi pod fail ho jaye toh yeh automatically naye pods create kar deta hai.
+
+**Example**:
+```yaml
+apiVersion: v1
+kind: ReplicationController
+metadata:
+  name: myapp-rc
+spec:
+  replicas: 3
+  selector:
+    app: myapp
+  template:
+    metadata:
+      labels:
+        app: myapp
+    spec:
+      containers:
+      - name: myapp-container
+        image: nginx
+```
+
+**Commands**:
+- `kubectl create -f replication-controller.yaml`: ReplicationController create karne ke liye.
+- `kubectl get rc`: Sabhi ReplicationControllers dekhne ke liye.
+- `kubectl delete rc <rc-name>`: Ek ReplicationController delete karne ke liye.
+
+**ReplicaSet**:
+ReplicaSet bhi similar function perform karta hai jaise ReplicationController, but yeh more flexible selector support karta hai. Yeh ensure karta hai ki specified number of pod replicas running rahein.
+
+**Example**:
+```yaml
+apiVersion: apps/v1
+kind: ReplicaSet
+metadata:
+  name: myapp-rs
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: myapp
+  template:
+    metadata:
+      labels:
+        app: myapp
+    spec:
+      containers:
+      - name: myapp-container
+        image: nginx
+```
+
+**Commands**:
+- `kubectl create -f replica-set.yaml`: ReplicaSet create karne ke liye.
+- `kubectl get rs`: Sabhi ReplicaSets dekhne ke liye.
+- `kubectl delete rs <rs-name>`: Ek ReplicaSet delete karne ke liye.
+
+Some advanced commands for working with Labels, Selectors, ReplicationController, and ReplicaSet in Kubernetes, explained in Hinglish.
+
+### Labels
+
+**Advanced Commands**:
+- **Updating Labels**:
+  ```bash
+  kubectl label pods <pod-name> app=myapp --overwrite
+  ```
+  Yeh command existing label ko overwrite karne ke liye use hoti hai.
+
+- **Filtering Pods using Multiple Labels**:
+  ```bash
+  kubectl get pods -l app=myapp,environment=production
+  ```
+  Yeh command multiple labels ke basis par filtering karne ke liye hai.
+
+### Selectors
+
+**Advanced Commands**:
+- **Using Set-Based Selectors**:
+  ```bash
+  kubectl get pods --selector='app in (myapp, yourapp)'
+  ```
+  Yeh command specific set-based selectors ko use karte hue pods retrieve karne ke liye hai.
+
+- **Using Not Equal Selector**:
+  ```bash
+  kubectl get pods -l 'app!=myapp'
+  ```
+  Yeh command specific label ke not equal condition par pods retrieve karne ke liye hai.
+
+### ReplicationController
+
+**Advanced Commands**:
+- **Scaling ReplicationController**:
+  ```bash
+  kubectl scale rc <rc-name> --replicas=5
+  ```
+  Yeh command ReplicationController ke replicas count ko change karne ke liye hai.
+
+- **Updating ReplicationController**:
+  ```bash
+  kubectl rolling-update <old-rc-name> --image=<new-image>
+  ```
+  Yeh command rolling update perform karne ke liye hai, jo safe way mein existing pods ko new image ke sath replace karti hai.
+
+### ReplicaSet
+
+**Advanced Commands**:
+- **Scaling ReplicaSet**:
+  ```bash
+  kubectl scale rs <rs-name> --replicas=5
+  ```
+  Yeh command ReplicaSet ke replicas count ko change karne ke liye hai.
+
+- **Describe ReplicaSet**:
+  ```bash
+  kubectl describe rs <rs-name>
+  ```
+  Yeh command specific ReplicaSet ka detailed description dekhne ke liye hai.
+
+- **Update Image in ReplicaSet**:
+  ```bash
+  kubectl set image rs/<rs-name> <container-name>=<new-image>
+  ```
+  Yeh command specific container ka image update karne ke liye hai.
+
+- **Deleting Pods and Checking Auto-Scaling**:
+  ```bash
+  kubectl delete pod <pod-name>
+  ```
+  Yeh command specific pod ko delete karne ke liye hai aur dekhna ki ReplicaSet automatically new pod create karta hai ya nahi.
+
+Yeh advanced commands aur concepts aapko Kubernetes mein Labels, Selectors, ReplicationController, aur ReplicaSet ke saath aur bhi effectively kaam karne mein madad karenge.
+_________________________________________________________________________________________________________________________________________________________
+
