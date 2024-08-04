@@ -877,3 +877,4 @@ Some advanced commands for working with Labels, Selectors, ReplicationController
 Yeh advanced commands aur concepts aapko Kubernetes mein Labels, Selectors, ReplicationController, aur ReplicaSet ke saath aur bhi effectively kaam karne mein madad karenge.
 _________________________________________________________________________________________________________________________________________________________
 
+
